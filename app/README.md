@@ -62,7 +62,7 @@ docker run -it sairajulad/python-lyricbot
 
 From here, you will be guided to a prompt where you can submit lyric requests and view any successful requests.
 
-Make sure to have your Discord API Key URL on hand- it is an important input for submitting a Lyric Request!
+Make sure to have your Discord API Key URL on hand- this is an important input for submitting a Lyric Request!
 
 <!-- CONTRIBUTING -->
 ## Contributing
