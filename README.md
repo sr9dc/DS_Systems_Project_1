@@ -10,7 +10,7 @@
 * [Python](https://www.python.org/)
 * [Docker](https://www.docker.com/)
 
-* Packages. See requirements.txt in this Folder.
+* Packages. See requirements.txt in app Folder.
 
 * The API used is [Lyrics.ovh](https://lyrics.ovh/), and the API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
 
