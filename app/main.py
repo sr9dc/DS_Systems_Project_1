@@ -39,7 +39,6 @@ print("[#FF8C00](exit) Exit the app. :pile_of_poo:[/]\n")
     
 
 while(True):
-    
     choice = ""
     choices = ["1", "2", "3", "help", "exit"]
     while choice not in choices:
@@ -54,7 +53,7 @@ while(True):
         with open("app/README.md") as readme:
             markdown = Markdown(readme.read())
         console.print(markdown)
-        print("\n\n\n")
+        print("\n")
         time.sleep(1)
         continue
 
@@ -153,10 +152,7 @@ while(True):
     if(choice =="3"):
         print("[green](3) Here are your lyric requests... [/]")
         time.sleep(1)
-        
         console.print(table)
-        
-        time.sleep(1)
         continue
     
     if(choice =="help"):
@@ -172,8 +168,3 @@ while(True):
     if(choice =="exit"):
         print("[#FF8C00]\nThank you for using the App... \n\n[bold magenta]Goodbye![/][/]\n")
         exit()
-            
-
-
-            
-
