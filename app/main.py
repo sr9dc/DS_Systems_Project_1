@@ -28,13 +28,13 @@ console.status("Test", spinner='dots')
 print("[bold magenta]Hello, Welcome to the Lyric Bot![/bold magenta] :smiley:\n")
 time.sleep(1)
 
-print("[cyan]To get started, type a number in for what you want to do:\n[/cyan]")
+print("[cyan]To get started, type what you want to do (no brackets):\n[/cyan]")
 time.sleep(1)
 
 print("[yellow](1) View the README. :books:[/]")
 print("[blue](2) Submit a Lyric Request. :airplane:[/]")
 print("[green](3) View your Lyric Requests. :eyes:[/]")
-print("[#F1948A](help) See this screen again. :open_hands:")
+print("[magenta](help) See this screen again. :open_hands:")
 print("[#FF8C00](exit) Exit the app. :pile_of_poo:[/]\n")
     
 
@@ -51,7 +51,7 @@ while(True):
         print("[yellow]\nViewing the README...[/]\n")
         time.sleep(1)
         
-        with open("README.md") as readme:
+        with open("app/README.md") as readme:
             markdown = Markdown(readme.read())
         console.print(markdown)
         print("\n\n\n")
@@ -60,24 +60,22 @@ while(True):
 
 
     if(choice =="2"):
-        print("[blue]\nGetting Submission Prompt Ready...[/]")
+        print("[bold blue]\nGetting Submission Prompt Ready...[/]")
         time.sleep(1)
         
         while(True):
             try:
                 webhook_url = console.input("\n[#5499C7]Input a Webhook URL to get Started: [/]")
                 if not is_valid_url(webhook_url):
-                    raise ValueError("Please provide a valid url, in the form of a protocol (https), hostname (site.com), and arguments (.../example)\n")  
+                    raise ValueError("Please provide a valid url, in the form of a protocol (https), hostname (site.com), and arguments (.../example)")  
             except ValueError as e:
                 print("[red]"+str(e)+"[/]")
                 continue
             
-            if requests.get(webhook_url).status_code != 200:
-                print("[red]"+"The URL isn't returning a status of 200, which is incorrect. Please provide the correct Webhook URL"+"[/]")
+            if not "discord" in webhook_url:
+                print("[red]"+"Please provide a Discord Webhook URL"+"[/]")
                 continue
                 
-            
-        
             
             webhook = DiscordWebhook(url=webhook_url, content="Here are the lyrics to your song!", \
                 username="Lyric Bot", avatar_url="https://i.pinimg.com/originals/69/96/5c/69965c2849ec9b7148a5547ce6714735.jpg")
@@ -87,7 +85,7 @@ while(True):
                 # Artist Input Part
                 while(True):
                     try: 
-                        artist_input = console.input("\n[#73C6B6]Enter an artist of a song: [/]").title()
+                        artist_input = console.input("[#5499C7]Enter an artist of a song: [/]").title()
                         
                         if not artist_input:
                             raise ValueError('Empty string, try again.\n')    
@@ -100,7 +98,7 @@ while(True):
                 # Song Input Part
                 while(True):
                     try:
-                        song_input = console.input("\n[#5499C7]Enter a song name to look up: [/]").title()
+                        song_input = console.input("[#5499C7]Enter a song name to look up: [/]").title()
 
                         if not song_input:
                             raise ValueError('Empty string, try again.\n')
@@ -111,17 +109,16 @@ while(True):
                     break
             
                 # Request Part
-
                 try:
                     r = requests.get("https://api.lyrics.ovh/v1/%s/%s" % (artist_input, song_input), timeout=10)
                 except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
-                    print("[red]Server taking too long. This likely means the song is not in the database.[/]")
+                    print("[red]Server taking too long. This likely means the song is not in the database.\n[/]")
                     continue
                 
                 try:
                     r.raise_for_status()
                 except requests.exceptions.HTTPError as e: 
-                    print('[red]Invalid Request. This likely means that the song name is mistyped. Try again.[/]')
+                    print('[red]Invalid Request. This likely means that the artist and/or song name is mistyped. Try again.\n[/]')
                     continue
                     
                 # Response Part
@@ -137,13 +134,14 @@ while(True):
                     
                 response = webhook.execute()
                 
+                # Save to table structure upon success
                 table.add_row(
                     time.strftime("%H:%M:%S", time.localtime()), artist_input, song_input
                 )
                 
                 
                 time.sleep(1)
-                print("[bold #7DCEA0]\nSuccess! It should now be in your discord channel![/]\n")
+                print("[bold #5499C7]\nSuccess! It should now be in your discord channel![/]\n")
                 time.sleep(1)
                 
         
@@ -153,20 +151,22 @@ while(True):
         continue
 
     if(choice =="3"):
+        print("[green](3) Here are your lyric requests... [/]")
+        time.sleep(1)
+        
         console.print(table)
         
         time.sleep(1)
         continue
     
     if(choice =="help"):
+        print("[cyan]\nHere we go again, type what you want to do (no brackets): \n[/cyan]")
         time.sleep(1)
-        print("[cyan]\nHere we go again, type a number in for what you want to do:\n[/cyan]")
-        time.sleep(1)
-        print("[yellow](1) View the README. [/]")
-        print("[blue](2) Submit a Lyric Request. [/]")
-        print("[green](3) View your Lyric Requests. [/]")
-        print("[#F1948A](help) See this screen again")
-        print("[#FF8C00](exit) Exit the app. [/]\n")
+        print("[yellow](1) View the README. :books:[/]")
+        print("[blue](2) Submit a Lyric Request. :airplane:[/]")
+        print("[green](3) View your Lyric Requests. :eyes:[/]")
+        print("[magenta](help) See this screen again. :open_hands:")
+        print("[#FF8C00](exit) Exit the app. :pile_of_poo:[/]\n")
         continue
     
     if(choice =="exit"):
