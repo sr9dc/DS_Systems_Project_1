@@ -74,7 +74,7 @@ while(True):
             if not "discord" in webhook_url:
                 print("[red]"+"Please provide a Discord Webhook URL"+"[/]")
                 continue
-                
+            
             
             webhook = DiscordWebhook(url=webhook_url, content="Here are the lyrics to your song!", \
                 username="Lyric Bot", avatar_url="https://i.pinimg.com/originals/69/96/5c/69965c2849ec9b7148a5547ce6714735.jpg")
@@ -119,6 +119,9 @@ while(True):
                 except requests.exceptions.HTTPError as e: 
                     print('[red]Invalid Request. This likely means that the artist and/or song name is mistyped. Try again.\n[/]')
                     continue
+                
+                
+                
                     
                 # Response Part
                 with open("app/lyrics.txt", "w") as file:
@@ -132,6 +135,9 @@ while(True):
                     webhook.add_file(file=file.read(), filename='lyrics.txt')
                     
                 response = webhook.execute()
+                if(response.status_code!=200):
+                    print('[red]Invalid Request. This likely means that the webhook provided is wrong. Start over.\n[/]')
+                    break
                 
                 # Save to table structure upon success
                 table.add_row(
