@@ -11,10 +11,10 @@
 * [Docker](https://www.docker.com/)
 
 * [Packages](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/requirements.txt)
-** See `requirements.txt`.
+  * See `requirements.txt`.
 
 * [Lyrics.ovh](https://lyrics.ovh/)
-** The API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
+  * The API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
 
 <!-- GETTING STARTED -->
 ## About
