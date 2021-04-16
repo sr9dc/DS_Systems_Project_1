@@ -10,7 +10,7 @@
 * [Python](https://www.python.org/)
 * [Docker](https://www.docker.com/)
 
-* [Packages](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/requirements.txt). See requirements.txt.
+* [Packages](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/requirements.txt). See `requirements.txt`.
 
 * [Lyrics.ovh](https://lyrics.ovh/). The API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
 
@@ -22,24 +22,25 @@ The **Lyric Bot** is a dockerized Python3 application that can be run interactiv
 When the user manually inputs a Discord API key URL in the console, the chosen song's lyrics will be posted into the channel corresponding to the key. The output to the Discord channel is a success message, a text file with the lyrics, and an embed figure with the artist and song name requested. 
 
 There are 5 options for the user to choose, which have corresponding error checks to ensure input validation:
-(1) View the README.
-(2) Submit a Lyric Request. 
-(3) View your Lyric Requests. 
-(help) See this screen again. 
-(exit) Exit the app. 
+`(1)` View the README.
+`(2)` Submit a Lyric Request. 
+`(3)` View your Lyric Requests. 
+`(help)` See this screen again. 
+`(exit)` Exit the app. 
 
-* If (1) is chosen, this current README page will be printed out using the Python rich package print() method. 
+If: 
+* `(1)` is chosen, this current README page will be printed out using the Python rich package print() method. 
 
-* If (2) is chosen, an input prompt will be generated, with the Discord Webhook URL, Artist, and Song name inputs. The URL will be error checked for link syntax, which uses the open-source Django regular expressions in url_validator.py to ensure the formatting is correct. Additionally, the Webhook must have a Discord.com hostname. If the incorrect Webhook is provided, it will be error checked on response errors. If the response status is not 200, then an error message will be displayed, causing the input prompt to restart. Upon a successful run, the Lyric, Artist and Song data will sent to the Discord channel, and will be stored in a rich table, viewable via option (3). Once user exits the program, all the data inputted is cleared. 
+* `(2)` is chosen, an input prompt will be generated, with the Discord Webhook URL, Artist, and Song name inputs. The URL will be error checked for link syntax, which uses the open-source Django regular expressions in url_validator.py to ensure the formatting is correct. Additionally, the Webhook must have a Discord.com hostname. If the incorrect Webhook is provided, it will be error checked on response errors. If the response status is not 200, then an error message will be displayed, causing the input prompt to restart. Upon a successful run, the Lyric, Artist and Song data will sent to the Discord channel, and will be stored in a rich table, viewable via option (3). Once user exits the program, all the data inputted is cleared. 
 
-* If (3) is chosen, all successful Artist and Song requests will be tabulated corresponding to the time, using the python time package. Therefore, the 3 columns are Time, Artist, and Song. With no requests, an empty table will be generated. 
+* `(3)` is chosen, all successful Artist and Song requests will be tabulated corresponding to the time, using the python time package. Therefore, the 3 columns are Time, Artist, and Song. With no requests, an empty table will be generated. 
 
-* If (help) is chosen, the options list will be shown once again after the initial run. 
+* `(help)` is chosen, the options list will be shown once again after the initial run. 
 
-* If (exit) is chosen , the kernel application will exit. 
+* `(exit)` is chosen , the kernel application will exit. 
 
 
-As mentioned in the third option (3), at the end of the run no data is saved, which ensures that the security of the Discord channel is maintained. 
+As mentioned in the third option `(3)`, at the end of the run no data is saved, which ensures that the security of the Discord channel is maintained. 
 
 
 <!-- GETTING STARTED -->
