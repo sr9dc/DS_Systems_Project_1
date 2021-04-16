@@ -29,7 +29,7 @@ There are 5 options for the user to choose, which have corresponding error check
 `(exit)` Exit the app. 
 
 If: 
-* `(1)` is chosen, this current [README](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/README.md) page will be printed out using the Python rich package print() method. 
+* `(1)` is chosen, this current [README](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/README.md) page will be printed out using the Python rich package `print()` method. 
 
 * `(2)` is chosen, an input prompt will be generated, with the Discord Webhook URL, Artist, and Song name inputs. The URL will be error checked for link syntax, which uses the open-source Django regular expressions in url_validator.py to ensure the formatting is correct. Additionally, the Webhook must have a Discord.com hostname. If the incorrect Webhook is provided, it will be error checked on response errors. If the response status is not 200, then an error message will be displayed, causing the input prompt to restart. Upon a successful run, the Lyric, Artist and Song data will sent to the Discord channel, and will be stored in a rich table, viewable via option (3). Once user exits the program, all the data inputted is cleared. 
 
