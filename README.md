@@ -10,9 +10,9 @@
 * [Python](https://www.python.org/)
 * [Docker](https://www.docker.com/)
 
-* Packages. See requirements.txt.
+* [Packages](https://github.com/sr9dc/DS_Systems_Project_1/blob/master/requirements.txt). See requirements.txt.
 
-* The API used is [Lyrics.ovh](https://lyrics.ovh/), and the API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
+* [Lyrics.ovh](https://lyrics.ovh/). The API documentation is freely available on [Apiary.io](http://docs.lyricsovh.apiary.io/). 
 
 <!-- GETTING STARTED -->
 ## About
